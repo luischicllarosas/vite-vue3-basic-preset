@@ -15,8 +15,8 @@
             @size-change="handleSizeChange"
             @current-change="handleCurrentChange" >
         </el-pagination>
-        <el-button type="primary" round @click="changeLanguage">
-            {{ $t('buttons.changeLanguage') }}
+        <el-button type="primary" round>
+            <!-- {{ $t('buttons.changeLanguage') }} -->
         </el-button>
     </div>
 </template>
@@ -29,7 +29,6 @@
 import Base from '@/lib/ts/Base'
 import { computed, ref } from "vue";
 import { useStore } from '@/store';
-import { i18n, setLanguage } from '@/i18n';
 
 let refText = ref("未修改");
 let reactiveText = ref({text: "未修改"});
@@ -39,10 +38,6 @@ let api3Text = ref({text: "未修改"});
 
 let elPageSize = ref(100);
 let elCPage = ref(1);
-
-function changeLanguage() {
-    setLanguage(i18n.global.locale === "zh-cn" ? 'en' : 'zh-cn')
-}
 
 function handleSizeChange(val: number) {
     elPageSize.value = val
